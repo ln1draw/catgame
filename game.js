@@ -67,8 +67,34 @@ function checkPlayerMove(direction, currentRoom) {
   }
 }
 
+function drawCanvas() {
+  var canvas = document.getElementById('house');
+
+  if (canvas.getContext){
+    var ctx = canvas.getContext('2d');
+
+    drawRects(ctx, "rgba(255, 0, 0, 0.5)", 250, 100, 100, 100);
+
+    drawRects(ctx, "rgba(255, 255, 0, 0.5)", 350, 100, 100, 100);
+
+    drawRects(ctx, "rgba(0, 255, 255, 0.5)", 450, 100, 100, 100);
+
+    drawRects(ctx, "rgba(0, 255, 0, 0.5)", 375, 200, 50, 50);
+
+    drawRects(ctx, "rgba(255, 0, 255, 0.5)", 475, 200, 75, 50);
+  } else {
+    // canvas-unsupported code here
+  }
+}
+
+function drawRects(ctx, rgba, x, y, width, height) {
+  ctx.fillStyle = rgba;
+  ctx.fillRect (x, y, width, height);
+}
 
 $(document).ready(function () {
+
+  drawCanvas();
 
   $('.content').keydown(function (e) {
     var currentRoom = house[player.position];
