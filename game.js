@@ -70,16 +70,18 @@ function movePlayer(roomIndex) {
   player.y = house[player.position].playerY;
 
   ctx.fillRect(player.x, player.y, 10, 10);
-  console.log('player has moved to ' + house[player.position].room);
+  ctx.save();
 }
 
 function cantMove() {
-  console.log('you can\'t go that way!');
+  ctx.font = '200px serif';
+  ctx.fillStyle = 'rgb(255, 0, 0)';
+  ctx.fillText('X', 320, 260);
+  game.invalidMove = true;
 }
 
 function checkPlayerMove(direction, currentRoom) {
   if (currentRoom[direction] !== null) {
-    console.log(currentRoom);
     movePlayer(currentRoom[direction]);
   } else {
     cantMove();
