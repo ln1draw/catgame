@@ -29,7 +29,7 @@ var house = [
     left: null,
     right: null,
     down: null,
-    playerX: 380,
+    playerX: 382,
     playerY: 245
   },
 
@@ -92,11 +92,58 @@ function initializeCanvas() {
     ctx = canvas.getContext('2d');
     ctx.font = '16px serif';
 
-    ctx.strokeRect(200, 100, 125, 125);
-    ctx.strokeRect(325, 100, 125, 125);
-    ctx.strokeRect(450, 100, 125, 125);
-    ctx.strokeRect(360, 225, 50, 50);
-    ctx.strokeRect(500, 225, 75, 50);
+
+    // draw outline of map
+    ctx.moveTo(500, 225);
+    ctx.lineTo(410, 225);
+    ctx.lineTo(410, 270);
+    ctx.lineTo(365, 270);
+    ctx.lineTo(365, 225);
+    ctx.lineTo(200, 225);
+    ctx.lineTo(200, 100);
+    ctx.lineTo(575, 100);
+    ctx.lineTo(575, 275);
+    ctx.lineTo(500, 275);
+    ctx.lineTo(500, 225);
+
+    // add barriers to create distinctive rooms with doorways
+
+    ctx.moveTo(325, 100);
+    ctx.lineTo(325, 150);
+    ctx.moveTo(325, 225);
+    ctx.lineTo(325, 175);
+
+    ctx.moveTo(450, 100);
+    ctx.lineTo(450, 150);
+    ctx.moveTo(450, 225);
+    ctx.lineTo(450, 175);
+
+    ctx.moveTo(410, 225);
+    ctx.lineTo(395, 225);
+    ctx.moveTo(365, 225);
+    ctx.lineTo(380, 225);
+
+    ctx.moveTo(500, 225);
+    ctx.lineTo(550, 225);
+
+    ctx.stroke();
+
+    // stairs
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
+    ctx.moveTo(510, 225);
+    ctx.lineTo(510, 275);
+    ctx.moveTo(520, 225);
+    ctx.lineTo(520, 275);
+    ctx.moveTo(530, 225);
+    ctx.lineTo(530, 275);
+    ctx.moveTo(540, 225);
+    ctx.lineTo(540, 275);
+    ctx.moveTo(550, 225);
+    ctx.lineTo(550, 275);
+
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgb(0, 0, 0)';
 
     ctx.fillText("Living Room", 220, 90);
     ctx.fillText("Kitchen", 355, 90);
@@ -105,7 +152,6 @@ function initializeCanvas() {
     ctx.fillText("Stairwell", 505, 295);
 
     ctx.save();
-
 
     ctx.fillRect(player.x, player.y, 10, 10);
   } else {
