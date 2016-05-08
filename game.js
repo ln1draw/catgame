@@ -72,13 +72,22 @@ function drawCanvas() {
 
   if (canvas.getContext){
     var ctx = canvas.getContext('2d');
+    ctx.font = '16px serif';
 
-    ctx.strokeRect(250, 100, 100, 100);
-    ctx.strokeRect(350, 100, 100, 100);
-    ctx.strokeRect(450, 100, 100, 100);
-    ctx.strokeRect(375, 200, 50, 50);
-    ctx.strokeRect(475, 200, 75, 50);
+    ctx.strokeRect(200, 100, 125, 125);
+    ctx.strokeRect(325, 100, 125, 125);
+    ctx.strokeRect(450, 100, 125, 125);
+    ctx.strokeRect(360, 225, 50, 50);
+    ctx.strokeRect(500, 225, 75, 50);
 
+    ctx.fillText("Living Room", 220, 90);
+    ctx.fillText("Kitchen", 355, 90);
+    ctx.fillText("Dining Room", 470, 90);
+    ctx.fillText("Half Bath", 355, 295);
+    ctx.fillText("Stairwell", 505, 295);
+
+
+    ctx.fillRect(255, 160, 10, 10);
   } else {
     // canvas-unsupported code here
   }
