@@ -1,4 +1,5 @@
 var canvas, ctx;
+var game = {invalidMove: false};
 var house = [
   {
     id: 0,
@@ -108,6 +109,8 @@ function initializeCanvas() {
 
 
     ctx.fillRect(player.x, player.y, 10, 10);
+
+    return ctx;
   } else {
     // canvas-unsupported code here
   }
@@ -115,10 +118,16 @@ function initializeCanvas() {
 
 $(document).ready(function () {
 
-  initializeCanvas();
+  var ctx = initializeCanvas();
 
   $('.content').keydown(function (e) {
     var currentRoom = house[player.position];
+    if (game.invalidMove) {
+      ctx.fillStyle = 'rgb(0, 0, 0)';
+      console.log(ctx)
+      ctx.restore();
+      game.invalidMove = false;
+    }
     if (e.keyCode == 37) {
       checkPlayerMove('left', currentRoom);
     } else if (e.keyCode == 38) {
